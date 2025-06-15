@@ -1,5 +1,5 @@
 # Diode tester
-A simple tester to measure, under different current values, the voltage drop across a the diode when forward biased, or the working voltage of a Zener diode, when reverse biased.
+A simple tester to measure, under different current values, the voltage drop across a diode when forward biased, or the working voltage of a Zener diode, when reverse biased.
 <br>
 The circuit may be powered from $12VDC$ to $30VDC$. Obviously the maximum measurable zener voltage depends on the supply voltage.
 
