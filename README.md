@@ -29,7 +29,8 @@ In the simulation, a value of $H_{FE}=15$ was set for the transistor BD537.
 #### Load driver network:
 The load current must be adjustable between about $1.5mA$ and $50mA$:
 
-$I_{C3} = V_{BE2}/R_3 \implies R_{3_{1.5mA}} = 350$&Omega; and $R_{3_{50mA}} = 14$&Omega; $\implies  R_{3a} = 15$&Omega;$, R_3 = 470$&Omega;
+$I_{C3} = V_{BE2}/R_3 \implies R_{3_{1.5mA}} = 350$&Omega; and $R_{3_{50mA}} = 14$&Omega; $\implies$  
+$R_{3a} = 15$&Omega;$, R_3 = 470$&Omega;
 
 $P_{R_{3_{MAX}}} = I_{C_{3_{MAX}}}^2 * R_{3_{MAX}} = 38mW$
 
