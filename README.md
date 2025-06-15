@@ -37,11 +37,14 @@ $P_{R_{3_{MAX}}} = I_{C_{3_{MAX}}}^2 * R_{3_{MAX}} = 38mW$
 $V_{CE_3} = V_{CC} - V_{load} - V_{BE_2}$
 
 Assuming: $V_{load_{MIN}} = 0.3V$ and $V_{load_{MAX}} = 18V$
-$ \implies V_{CE_{3_{12V}}} = (2.3 - 11.1)V$ and $V_{CE_{3_{24V}}} = (5.3 - 23.1)V \implies V_{CE} = (2.3 - 23.1)V$
+
+$V_{CE_{3_{12V}}} = (2.3 - 11.1)V$ and $V_{CE_{3_{24V}}} = (5.3 - 23.1)V \implies V_{CE} = (2.3 - 23.1)V$
 
 $P_{Q_{3_{MAX}}} = V_{CE_{3_{MAX}}} * I_{C_{3_{MAX}}} = 1.1W$
 
-Assuming: $H_{FE_3} \geq 15 \implies I_{B_{3_{MIN}}} = I_{C_{3_{MAX}}}/H_{FE_3} = 3.3mA$
+Assuming: $H_{FE_3} \geq 15$
+
+$I_{B_{3_{MIN}}} = I_{C_{3_{MAX}}}/H_{FE_3} = 3.3mA$
 
 #### Control & reference network:
 $V_{CE_2} = V_{BE_2} + V_{BE_3} = 1.4V$
