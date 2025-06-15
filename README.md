@@ -14,12 +14,12 @@ The circuit may be powered from $12VDC$ to $30VDC$. Obviously the maximum measur
 - variable load current from $0$ to $50mA$
 
 
-## PSpice simulation
+### PSpice simulation
 ![plot](resources/pspice_plot.jpg)
 ![schematic](resources/pspice_schematic.jpg)
 <br>
 
-#### Note: 
+##### Note: 
 In the worst case, i.e. with maximum supply voltage ($30VDC$) and load current ($50mA$), Q3 must be able to dissipate more than $1W$.
 
 In the simulation, a value of $H_{FE}=15$ was set for the BD537.
