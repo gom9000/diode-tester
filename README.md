@@ -15,13 +15,13 @@ The circuit may be powered from $12VDC$ to $24VDC$. Obviously the maximum measur
 - adjustable load current between about $1.5mA$ and $50mA$
 
 
-### PSpice Simulation
-![plot](resources/pspice_plot.jpg)
-![schematic](resources/pspice_schematic.jpg)
+### LTspice Simulation
+![plot](resources/ltspice-plot.jpg)
+![schematic](resources/ltspice-schematic.jpg)
 <br>
 
 ##### Note: 
-In the worst case, i.e. with maximum supply voltage ($24VDC$) and load current ($50mA$), transistor Q3 must be able to dissipate more than $1W$.
+In the worst case, i.e. with maximum supply voltage ($24VDC$) and maximum load current ($50mA$), transistor Q3 must be able to dissipate more than $1W$.
 
 In the simulation, a value of $H_{FE}=15$ was set for the transistor BD537.
 
@@ -37,7 +37,7 @@ $P_{R_{3_{MAX}}} = I_{C_{3_{MAX}}}^2 * R_{3_{MAX}} = 38mW$
 
 $V_{CE_3} = V_{CC} - V_{load} - V_{BE_2}$
 
-Assuming: $V_{load_{MIN}} = 0.3V$ and $V_{load_{MAX}} = 18V$
+Assuming: $V_{load_{MIN}} = 0.3V$ (for a forward biased schottky diode) and $V_{load_{MAX}} = 18V$ (for a reverse biased zener diode)
 
 $V_{CE_{3_{12V}}} = (2.3 - 11.1)V$ and $V_{CE_{3_{24V}}} = (5.3 - 23.1)V \implies V_{CE} = (2.3 - 23.1)V$
 
