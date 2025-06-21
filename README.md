@@ -42,11 +42,11 @@ $P_{Q_{3_{MAX}}} = V_{CE_{3_{MAX}}} * I_{C_{3_{MAX}}} = 1.1W$
 A medium-power transistor is needed for Q3.<br/>
 It is best to use a Darlington, which has a high $H_{FE}$, so as to keep its base current small, and also the reference current of Q1. Assuming: $H_{FE_3} \geq 1000$
 
-$I_{B_{3_{MIN}}} = I_{C_{3_{MAX}}}/H_{FE_3} = 50$&micro;$A$
+$I_{B_{3_{MIN}}} = I_{C_{3_{MAX}}}/H_{FE_3} = 50$&micro; $A$
 
-With a small heatsink (&Theta;$_{hs} = 5$ &deg;$C/W$) and assuming $T_A = 30$&deg;$C$:
+With a small heatsink (&Theta; $_{hs} = 5$ &deg; $C/W$) and assuming $T_A = 30$&deg; $C$:
 
-$T_{Q_{3_{MAX}}} = T_A + P_{Q_{3_{MAX}}}*($&Theta;$_{jc} + $&Theta;$_{hs}) = 40$ &deg;$C$
+$T_{Q_{3_{MAX}}} = T_A + P_{Q_{3_{MAX}}}*($ &Theta; $_{tot}) = 40$&deg; $C$
 
 
 #### Control & current reference network:
