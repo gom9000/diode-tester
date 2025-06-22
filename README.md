@@ -1,7 +1,7 @@
 # Diode tester
 A simple tester to measure, under different current values, the voltage drop across a diode when forward biased, or the working voltage of a Zener diode when reverse biased.<br/>
 The circuit may be powered with a DC-Adapter $12VDC$ or $24VDC$, obviously the maximum measurable zener voltage depends on the supply voltage.<br/>
-The circuit allows you to test diodes of different power, which require different minimum activation currents. For this reason, the current flowing in the diode under test can be selected by a variable resistor, from a minimum of about $1.5mA$ up to $50mA$. This also allows you to observe the variations in voltage, voltage drop or Zener, for different current values.
+The circuit allows you to test different types of diodes, which require different minimum activation currents. For this reason, the current flowing in the diode under test can be selected by a variable resistor, from a minimum of about $1.5mA$ up to $50mA$. This also allows you to observe the variations in voltage, voltage drop or Zener, for different current values.
 
 ![overview](resources/diode-tester_overview.jpg)
 ![inside](resources/diode-tester_inside.jpg)
