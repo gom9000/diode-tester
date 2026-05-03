@@ -47,17 +47,17 @@ Assuming $V_{load_{MIN}} = 0.3V$ (for a forward biased schottky diode) and $V_{l
 
 $V_{CE_{3_{12V}}} = (2.3 - 11.1)V$ and $V_{CE_{3_{24V}}} = (5.3 - 23.1)V \implies V_{CE} = (2.3 - 23.1)V$
 
-$P_{Q_{3_{MAX}}} = V_{CE_{3_{MAX}}} * I_{C_{3_{MAX}}} = 1.1W$
+$P_{Q_{3_{MAX}}} = V_{CE_{3_{MAX}}} * I_{C_{3_{MAX}}} = 0.7W$
 
 A medium-power transistor is needed for $Q_3$ with a small heatsink:
 
 &Theta; $_{jc} = 2.5$ &deg; $C/W$,
 
-&Theta; $_{hs} = 5$ &deg; $C/W$
+&Theta; $_{hs} = (5 - 10)$ &deg; $C/W$
 
 Assuming $T_A = 30$&deg; $C$:
 
-$T_{Q_{3_{MAX}}} = T_A + P_{Q_{3_{MAX}}}*($ &Theta; $_{tot}) = 40$&deg; $C$
+$T_{Q_{3_{MAX}}} = T_A + P_{Q_{3_{MAX}}}*($ &Theta; $_{tot}) \leq 40$&deg; $C$
 
 
 #### Control & current reference network:
