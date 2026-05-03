@@ -86,17 +86,12 @@ $V_{R_1} = V_{CC} - 2* V_D = (10.8 - 22.8)V \implies I_{R_1} = V_{R_1}/R_1 = (.9
 (*) If $Q_3$ were not a Darlington, its $H_{FE}$ would be about $15$. In the worst case ($V_{CC}=24V$ and $I_{C_{3}}=50mA$), its base current should be in the $mA$ range, so $Q_1$'s collector current should be set to at least $(10-15)mA$. Since $V_{CE_1}$ must sink virtually all of the $V_{CC}$, the power to be dissipated would require a medium-power transistor for $Q_1$ as well.
 
 #### Display network:
-The display network is responsible for translating the voltage drop across the diode into a readable signal for the digital voltmeter module while isolating the measurement loop from the display's power requirements.
-
+The display network translates the voltage drop across the diode into a decoupled and ground-referenced signal for the digital voltmeter.<br/>
 The core of this stage is the TL081 operational amplifier, configured as a unity-gain differential amplifier.
+It converts the floating measurement into a single-ended output referred to GND, ensuring compatibility with standard 3-wire digital display modules.<br/>
+The JFET inputs of the TL081 ensure virtually no current is drawn from the test loop, maintaining the integrity of the selected test current (1mA to 30mA).
 
-- High Impedance Isolation: The op-amp features extremely high input impedance. This ensures it does not "sink" current from the test loop, guaranteeing that the full programmed current from SW1 flows exclusively through the load.
-
-- Common-Mode Rejection: The TL081 measures the potential difference between the anode and the cathode of the component. This is critical because the cathode is not tied to GND but sits at the emitter potential of Q3. The differential configuration extracts only the relevant voltage drop.
-
-- Ground-Referenced Output: Most digital voltmeter modules require a common ground reference. The TL081 output (Pin 1) provides a voltage referred to GND that faithfully mirrors the voltage across the diode, making it compatible with standard 3-wire LED/LCD displays.
-
-*When no diode is connected, the display will show the maximum supply voltage (VCC​−Vdrop​). This is normal behavior for a constant current generator operating at no load.*
+*Note: When no diode is connected, the display will show the maximum available voltage (VCC​−Vdrop​). This is normal behavior for a constant current generator operating at no load.*
 
 
 ### LTspice Simulation
@@ -110,18 +105,18 @@ For the simulation, the value $H_{FE}=1000$ was set for the transistor $Q_3$.
 
 
 ### Calibration Procedure
-Proper calibration is essential to ensure that the displayed value accurately reflects the voltage drop across the device under test, eliminating offsets introduced by component tolerances and semiconductor junctions.
+Two-step process is required to align the internal measurement electronics and to set the operational test currents. This ensures that the displayed values accurately reflect the load characteristics without interference from component tolerances.
 
-#### Zero-Adjustment (Offset):
-This step balances the TL081 operational amplifier's resistive bridge, ensuring that the quiescent voltage at the base of Q3 is not interpreted as a measurement signal.
-- Power the circuit without inserting any component into the TEST termnals.
-- Short-circuit the TEST terminals using a jumper.
-- Rotate the trimmer R4b until the Volt Meter reads exactly 0.00V.
+#### Measurement circuit setting:
+This step balances the TL081 differential bridge to eliminate any residual voltage offset from the op-amp or the driver stage.
+1. Power the circuit without inserting any component into the TEST termnals.
+2. Short-circuit the TEST terminals using a jumper.
+3. Rotate the trimmer R4b until the Volt Meter reads exactly 0.00V.
 
-#### Current Ranges Calibration:
-Each position of the rotary switch SW1 must be calibrated to ensure the precise test current is delivered.
-- Connect a multimeter set to DC Current (mA) mode across the TEST terminals.
-- For each switch position, adjust the corresponding trimmer (R3a through R3f) until the multimeter displays the target current (1mA, 2mA, 5mA, 10mA, 20mA, or 30mA).
+#### Current ranges setting:
+This step calibrates each position of the rotary switch (SW1) to deliver the exact programmed test current through the load.
+1. Connect a multimeter set to DC Current (mA) mode across the TEST terminals.
+2. For each switch position, adjust the corresponding trimmer (R3a through R3f) until the multimeter displays the target current (1mA, 2mA, 5mA, 10mA, 20mA, or 30mA).
 
 
 ### PCB Layout
