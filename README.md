@@ -31,12 +31,12 @@ The load current must be adjustable between $1.0mA$ and $30mA$:
 $I_{C3} = V_{BE2}/R_3$
 
 Assuming $V_{BE2} = 0.7V  \implies$
-- $R_{3_{1.0mA}} = 23$&Omega; $\implies R_{3a} = 100$&Omega; trimmer
-- $R_{3_{2.0mA}} = 35$&Omega; $\implies R_{3b} = 100$&Omega; trimmer
-- $R_{3_{5.0mA}} = 70$&Omega; $\implies R_{3c} = 100$&Omega; trimmer
-- $R_{3_{10mA}} = 140$&Omega; $\implies R_{3d} = 200$&Omega; trimmer
-- $R_{3_{20mA}} = 350$&Omega; $\implies R_{3e} = 500$&Omega; trimmer
-- $R_{3_{30mA}} = 700$&Omega; $\implies R_{3f} = 1K$&Omega; trimmer
+- $R_{3_{1.0mA}} = 700$&Omega; $\implies R_{3a} = 1K$&Omega; trimmer
+- $R_{3_{2.0mA}} = 350$&Omega; $\implies R_{3b} = 500$&Omega; trimmer
+- $R_{3_{5.0mA}} = 140$&Omega; $\implies R_{3c} = 200$&Omega; trimmer
+- $R_{3_{10mA}} = 70$&Omega; $\implies R_{3d} = 100$&Omega; trimmer
+- $R_{3_{20mA}} = 35$&Omega; $\implies R_{3e} = 100$&Omega; trimmer
+- $R_{3_{30mA}} = 23$&Omega; $\implies R_{3f} = 100$&Omega; trimmer
 
 $P_{R_{3_{MAX}}} = I_{C_{3_{MAX}}}^2 * R_{3_{MIN}} = 2mW$
 
