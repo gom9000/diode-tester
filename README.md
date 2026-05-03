@@ -13,7 +13,7 @@ The circuit allows you to test different types of diodes, which require differen
 - test of voltage drop across a diode under different current values
 - test of the working voltage of a Zener diode (up to $V_{CC}$ minus a fews Volts) under different current values
 - supply voltage ($V_{CC}$) from DC-Adapter $12VDC$ or $24VDC$
-- adjustable load current between $1.5mA$ and $50mA$
+- adjustable load current between $1.0mA$ and $30mA$
 - display voltage and current across the diode under test
 - protection against reverse polarity of the supply voltage
 
