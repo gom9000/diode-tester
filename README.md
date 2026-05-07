@@ -13,7 +13,7 @@ The circuit allows testing of different diode types, each requiring different op
 - measurement of forward voltage drop under different current values
 - measurement of Zener breakdown voltage (up to $V_{CC}$ minus a few volts) under different current values
 - supply voltage ($V_{CC}$) from DC-Adapter $12VDC$ or $24VDC$
-- adjustable load current between $1.0mA$ and $30mA$
+- adjustable load current between $1mA$ and $30mA$
 - display voltage and current across the diode under test
 - protection against reverse polarity of the supply voltage
 
@@ -31,9 +31,9 @@ The load current must be adjustable between $1mA$ and $30mA$:
 The load current can be approximated as: $I_{C3} ≈ V_{BE2}/R_3$
 
 Assuming $V_{BE2} = 0.7V  \implies$
-- $R_{3_{1.0mA}} = 700$&Omega; $\implies R_{3a} = 1K$&Omega; trimmer
-- $R_{3_{2.0mA}} = 350$&Omega; $\implies R_{3b} = 500$&Omega; trimmer
-- $R_{3_{5.0mA}} = 140$&Omega; $\implies R_{3c} = 200$&Omega; trimmer
+- $R_{3_{1mA}} = 700$&Omega; $\implies R_{3a} = 1K$&Omega; trimmer
+- $R_{3_{2mA}} = 350$&Omega; $\implies R_{3b} = 500$&Omega; trimmer
+- $R_{3_{5mA}} = 140$&Omega; $\implies R_{3c} = 200$&Omega; trimmer
 - $R_{3_{10mA}} = 70$&Omega; $\implies R_{3d} = 100$&Omega; trimmer
 - $R_{3_{20mA}} = 35$&Omega; $\implies R_{3e} = 100$&Omega; trimmer
 - $R_{3_{30mA}} = 23$&Omega; $\implies R_{3f} = 100$&Omega; trimmer
