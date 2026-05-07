@@ -38,7 +38,7 @@ Assuming $V_{BE2} = 0.7V  \implies$
 - $R_{3_{20mA}} = 35$&Omega; $\implies R_{3e} = 100$&Omega; trimmer
 - $R_{3_{30mA}} = 23$&Omega; $\implies R_{3f} = 100$&Omega; trimmer
 
-The current depends on transistor VBE and therefore exhibits moderate thermal drift.
+The current depends on transistor $V_{BE} and therefore exhibits moderate thermal drift.
 
 $P_{R_{3_{MAX}}} = I_{C_{3_{MAX}}}^2 * R_{3_{MIN}} = 2mW$
 
@@ -103,7 +103,7 @@ The high input impedance of the op-amp minimizes loading effects on the test cur
 Below is the simulation of the circuit with the LTspice software.<br/>
 The simulation plots currents, voltages and powers on the transistors of the circuit, assuming a forward biased diode as a load. The simulation was performed using two different values ​​of $V_{CC}$ $(12V, 30V)$, for each of which the resistance $R_3$ is linearly modified from the value $15$&Omega; to $500$&Omega;, and then brought back to the value $15$&Omega;.<br/>
 The circuit was simulated up to 30V supply for stress analysis.
-In Plot 2, the Y-axis unit is displayed as voltage by LTspice, but it actually represents the resistance sweep of $R_3$ $(15-500$&Omega;$)$.<br/>
+In Plot 2, the Y-axis unit is displayed as voltage by LTspice, but it actually represents the resistance sweep of $R_3$ (15-500$&Omega;$).<br/>
 For the simulation, the value $H_{FE}=1000$ was set for the transistor $Q_3$.
 ![plot](resources/ltspice-plot.jpg)
 ![schematic](resources/ltspice-schematic.jpg)
