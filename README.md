@@ -38,7 +38,7 @@ Assuming $V_{BE2} = 0.7V  \implies$
 - $R_{3_{20mA}} = 35$&Omega; $\implies R_{3e} = 100$&Omega; trimmer
 - $R_{3_{30mA}} = 23$&Omega; $\implies R_{3f} = 100$&Omega; trimmer
 
-The current depends on transistor $V_{BE} and therefore exhibits moderate thermal drift.
+The current depends on transistor $V_{BE}$ and therefore exhibits moderate thermal drift.
 
 $P_{R_{3_{MAX}}} = I_{C_{3_{MAX}}}^2 * R_{3_{MIN}} = 2mW$
 
