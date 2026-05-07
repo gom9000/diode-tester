@@ -87,7 +87,7 @@ $V_{R_1} = V_{CC} - 2* V_D = (10.8 - 22.8)V \implies I_{R_1} = V_{R_1}/R_1 = (.9
 
 #### Display network:
 The display network translates the voltage drop across the diode into a decoupled and ground-referenced signal for the digital voltmeter.<br/>
-The core of this stage is the TL082 operational amplifier, configured as a unity-gain differential amplifier.
+The core of this stage is the operational amplifier, configured as a unity-gain differential amplifier.
 It converts the floating measurement into a single-ended output referred to GND, ensuring compatibility with standard 3-wire digital display modules.<br/>
 The JFET inputs of the OA ensure virtually no current is drawn from the test loop, maintaining the integrity of the selected test current (1mA to 30mA).
 
