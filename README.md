@@ -1,4 +1,6 @@
 # Diode tester
+**Type**: Component Tester | **Status**: Testing
+
 A simple tester to measure, under different current values, the voltage drop across a diode when forward biased, or the working voltage of a Zener diode when reverse biased.<br/>
 The circuit may be powered with a DC-Adapter $12VDC$ or $24VDC$, obviously the maximum measurable zener voltage depends on the supply voltage.<br/>
 The circuit allows you to test different types of diodes, which require different minimum activation currents. For this reason, the current flowing in the diode under test can be selected by a variable resistor, from a minimum of about $1mA$ up to $30mA$. This also allows you to observe the variations in voltage, voltage drop or Zener, for different current values.
@@ -7,13 +9,13 @@ The circuit allows you to test different types of diodes, which require differen
 ![inside](resources/diode-tester_inside.jpg)
 
 
-## Requirements
-- test of voltage drop across a diode under different current values
-- test of the working voltage of a Zener diode (up to $V_{CC}$ minus a fews Volts) under different current values
-- supply voltage ($V_{CC}$) from DC-Adapter $12VDC$ or $24VDC$
-- adjustable load current between $1mA$ and $30mA$
-- display voltage and current across the diode under test
-- protection against reverse polarity of the supply voltage
+## Specifications
+* **Diode Test:** Measure forward voltage drop ($V_f$) under selectable current values.
+* **Zener Test:** Measure working voltage (up to $V_{CC}$ minus a few volts) under selectable current values.
+* **Supply Voltage ($V_{CC}$):** 12VDC to 24VDC via standard DC-Adapter (integrated reverse polarity protection).
+* **Load Current:** Adjustable from ~$1mA$ up to $30mA$.
+* **Telemetry:** Real-time digital display of the voltage across the diode under test.
+* **Protection** against reverse polarity of the supply voltage
 
 
 ## Design
@@ -79,7 +81,8 @@ $P_{Q_{2_{MAX}}} = V_{CE_2} * (I_{R_2} - I_{B_3}) = 7mW$
 
 $V_{R_1} = V_{CC} - 2* V_D = (10.8 - 22.8)V \implies I_{R_1} = V_{R_1}/R_1 = (.9 - 1.9)mA \implies P_{R_{1_{MAX}}} = I_{R_{1_{MAX}}}^2*R_1 = 43mW$
 
-(*) If $Q_3$ were not a Darlington, its $H_{FE}$ would be about $15$. In the worst case ($V_{CC}=24V$ and $I_{C_{3}}=30mA$), its base current should be in the $mA$ range, so $Q_1$'s collector current should be set to at least $(10-15)mA$. Since $V_{CE_1}$ must sink virtually all of the $V_{CC}$, the power to be dissipated would require a medium-power transistor for $Q_1$ as well.
+(*) If $Q_3$ were not a Darlington, its $H_{FE}$ would be about $15$. In the worst case ($V_{CC}=24V$ and $I_{C_{3}}=30mA$), its base current should be in the $mA$ range, so $Q_1$'s collector current should be set to at least $(10-15)mA$. Since $V_{CE_1}$ must sink virtually all of the $V_{CC}$, the power to be dissipated would require a medium-power transistor for $Q_1$ as well.<br/>
+By adopting a Darlington transistor for $Q_3$, the internal double junction raises its base-emitter voltage to $V_{BE_3} \approx 1.4V$. Consequently, the collector voltage of $Q_2$ (which corresponds to the potential at the base of $Q_3$ relative to GND) settles at $V_{CE_2} = V_{R_3} + V_{BE_3} \approx 0.7V + 1.4V = 2.1V$.
 
 **Display network:**<br/>
 The display network translates the voltage drop across the diode into a decoupled and ground-referenced signal for the digital voltmeter.<br/>

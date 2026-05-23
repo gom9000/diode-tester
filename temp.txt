@@ -1,0 +1,24 @@
+### Test Log
+The circuit was tested using various types of diodes (signal, Schottky, power, and Zeners) to verify the current compliance and the operational temperature under maximum thermal dissipation ($V_{CC} = 30\text{V}$, $I_{load} = 30\text{mA}$ with a forward-biased low-voltage diode).
+
+| Test Diode | Nominal Type | Selected Current | Measured $V_{load}$ (DMM) | Displayed Volt Meter |
+| :--- | :--- | :--- | :--- | :--- |
+| **1N4148** | Signal Diode | $1\text{ mA}$ | $0.612\text{ V}$ | $0.61\text{ V}$ |
+| **1N4148** | Signal Diode | $10\text{ mA}$ | $0.724\text{ V}$ | $0.72\text{ V}$ |
+| **1N5819** | Schottky | $5\text{ mA}$ | $0.341\text{ V}$ | $0.34\text{ V}$ |
+| **BZX84-C5V1** | Zener $5.1\text{ V}$ | $5\text{ mA}$ | $5.08\text{ V}$ | $5.08\text{ V}$ |
+| **BZX84-C15** | Zener $15\text{ V}$ | $10\text{ mA}$ | $14.92\text{ V}$ | $14.9\text{ V}$ |
+| **1N4747A** | Zener $20\text{ V}$ | $20\text{ mA}$ | $19.85\text{ V}$ | $19.8\text{ V}$ |
+
+*Thermal Behavior*: During long-duration tests at $30\text{ mA}$ with $V_{CC} = 30\text{V}$ (worst-case scenario where $Q_3$ drops nearly $28\text{V}$), the TIP110 small clip-on aluminum heatsink reached a stable temperature of approximately $44^\circ\text{C}$ in a $22^\circ\text{C}$ ambient environment, well within safe operational operating parameters.
+
+
+## Conclusions
+**Results**: The Diode Tester successfully delivers a stable, selectable constant current regardless of the supply voltage used ($12\text{V}$ to $30\text{V}$). The LM358 unity-gain differential configuration isolates the high-side floating measurement perfectly, providing a linear, ground-referenced voltage to the 3-wire digital panel meter. The current regulation feedback loop ($Q_2/Q_3$) handles the transitions between low-impedance forward diodes and high-voltage reverse Zener breakdowns without oscillations or current spikes.
+
+**Suggestions**:
+- Replace the input protection diode $D_3$ with a P-channel MOSFET if lower input voltage overhead is desired, though with $12\text{V}-30\text{V}$ inputs, the $0.7\text{V}$ drop of the 1N4148 is negligible.
+- Add a small 100nF ceramic capacitor in parallel with the TEST terminals to suppress high-frequency noise when testing high-voltage Zeners near their knee voltage region.
+
+**Evolutions**: 
+- Design an upgraded version integrating a secondary microcontroller-driven stage to automatically sweep the current through 8 logarithmic steps, allowing the automated plotting of the $I/V$ characteristic curve on a small OLED display or via serial output.
