@@ -34,32 +34,35 @@ The circuit operates with an input voltage ($V_{CC}$) of up to 30V and delivers 
 
 #### 1. Constant Current Reference ($I_{ref}$ *sink*)
 The left section of the schematic implements a ground-referenced constant current sink $I_{ref}$.
-Led $DL_2$, (a standard GaAsP diffused red LED), establishes a stable, low reference voltage at the base of $Q_1$ (approximately $1.6V$ to $1.8V$) while providing basic thermal compensation.
+Led $DL_2$, (a standard GaAsP diffused red LED), establishes a stable, low reference voltage at the base of $Q_1$ (approximately $1.8V$ to $1.9V$) while providing basic thermal compensation.
 The reference current $I_{ref}$ flowing into $Q_1$ is selected via the emitter resistor network managed by switch $S$ ($R_3 + R_{3x}$):
+
 $$I_{ref} \approx \frac{V_{DL2} - V_{BE1}}{R_3 + R_{3x}}$$
+
  *Because the selection takes place on the emitter side of $Q_1$, the entire current control block safely operates at low voltage relative to ground.
 
-On the left-side of $Q_1$, assuming $V_{DL2} \approx 1.8V$, $V_{BE1} \approx 0.65\text{V}$, $I_{U1} \approx 5mA$ (regulator quiescent current):
+On the left-side of $Q_1$, assuming $V_{DL2} \approx 1.9V$, $V_{BE1} \approx 0.6\text{V}$, $I_{U1} \approx 5mA$ (regulator quiescent current):
 
-$I_{DL2} = \frac{{V_{U1_{OUT}}} - V_{DL2}}{R_2} \approx 4mA$
+$I_{DL2} = \frac{{V_{U1_{OUT}}} - V_{DL2}}{R_2} = 3.8mA$
 
-$P_{R2} = I_{R2}^2 \times R_2 = (4.14\text{mA})^2 \times 810\Omega \approx 14\text{mW}$
-$P_{U1} = (V_{CC} - V_{U1_{OUT}}) \times (I_{DL2} + I_{U1}) = 225mW$
+$P_{R2} \approx I_{DL2}^2 \times R_2 = 12mW$<br/>
+$P_{U1} = (V_{CC} - V_{U1_{OUT}}) \times (I_{DL2} + I_{U1}) = 220mW$
 
-For a $\text{LM}7805$ in a TO-126 package: $\theta_{ja} \approx 65^{\circ}\text{C/W}$.
-$T_j = T_a + \theta_{ja} \times P_{U1} \approx 30^{\circ} C + 15^{\circ} C = 45^{\circ} C$
+For a $\text{LM}7805$ in a TO-126 package: $\theta_{ja} \approx 65^{\circ} C/W$<br/>
+$T_j = T_a + \theta_{ja} \times P_{U1} \approx 30^{\circ} C + 14^{\circ} C = 44^{\circ} C$
 
-On the right-side of $Q_1$:
-In the absolute worst-case scenario where $R_{3x} \to 0\Omega$, the reference current reaches its theoretical upper limit determined solely by the fixed degeneration resistor $R_3 = 51\Omega$.
-$I_{ref_{max}} = (V_{DL2} - V_{BE1})/R3 \approx 23mA$
-$P_{R3} = I_{ref\_max}^2 \times R_3 \approx 26\text{mW}$
-$V_{CE1\_max} = V_{CC} - R_4 \times I_{ref_{max}} - V_{BE2} - R_3 \times I_{ref_{max}} = 30\text{V} - 2.3\text{V} - 0.65\text{V} - 1.17\text{V} \approx 26\text{V}$
-$P_{Q1\_max} = V_{CE1\_max} \times I_{ref_{max}} = 600\text{mW}$
+On the right-side of $Q_1$, in the absolute worst-case scenario where $R_{3x} \to 0\Omega$, the reference current reaches its theoretical upper limit determined solely by the fixed degeneration resistor $R_3 = 82\Omega$:
 
-For a BD139 ($\text{TO}126$ package, $\theta_{ja} \approx 100^{\circ}\text{C/W}$):
-$T_j = T_a + \theta_{ja} \times P_{Q1_{max}} \approx 30^{\circ}\text{C} + 60^{\circ}\text{C} = 90^{\circ}\text{C}$
+$I_{ref_{max}} = (V_{DL2} - V_{BE1})/R3 \approx 16mA$<br/>
+$P_{R3} = I_{ref\_max}^2 \times R_3 = 21mW$<br/>
+$V_{CE1\_max} = V_{CC} - R_4 \times I_{ref_{max}} - V_{BE2} - R_3 \times I_{ref_{max}} = 30V - 1.6V - 0.6V - 1.3V = 26.5V$<br/>
+$P_{Q1\_max} = V_{CE1\_max} \times I_{ref_{max}} = 420mW$
+
+For a BD139 ($\text{TO}126$ package, $\theta_{ja} \approx 100^{\circ} C/W$):<br/>
+$T_j = T_a + \theta_{ja} \times P_{Q1_{max}} \approx 30^{\circ} C + 42^{\circ} C = 72^{\circ}\text{C}$
 
 *Note: Under normal calibrated loop operation for $I_{out} = 100\text{mA}$, the active simulation shows $I_{ref}$ settles around $12\text{mA}$, making this a very conservative safety boundary calculation).*
+
 #### 2. Upper Current Mirror ($I_{ref}$ *source*)
 To inject (*source*) current into the diode under test, the reference current $I_{ref}$ must be flipped relative to the positive supply rail. Transistors $Q_2$ and $Q_3$ act as an upper current mirror that steers $I_{ref}$ ($I_{C3} \approx I_{ref}$) into the base node of the pass-transistor $Q_8$.
 
@@ -70,13 +73,13 @@ $P_{Q3\_max} = V_{CE3\_max} \times I_{ref_{max}} = 620\text{mW}$
 Transistor $Q_8$ acts as the series regulating element (*pass-transistor*), directly sourcing the test current to the load from its emitter terminal. Resistor $R_{10}$ (bleeder resistor), tied across the base-emitter junction of $Q_8$, provides a discharge path for leakage currents, ensuring a fast and clean turn-off of the pass-transistor when the circuit is idle or open-circuited.
 
 Assuming a forward-biased Schottky as load ($V_{load\_min} = 0.3V$), and $I_{out} = 100mA$:
-$V_{CE8\_max} = V_{CC} - R_7 \times I_{out} - V_{BE5} - V_{load\_min} \approx 30\text{V} - 0.5\text{V} - 0.65\text{V} - 0.3\text{V} \approx 28.5\text{V}$
+
+$V_{CE8\_max} = V_{CC} - R_7 \times I_{out} - V_{BE5} - V_{load\_min} \approx 30\text{V} - 0.5\text{V} - 0.65\text{V} - 0.3\text{V} \approx 28.5\text{V}$<br/>
 $P_{Q8\_max} = V_{CE8\_max} \times I_{out\_max} = 2.85\text{W}$
 
 For a $\text{BD}139$ in a TO-126 package: $\theta_{jc} \approx 10^{\circ}\text{C/W}$. To safely keep $T_j \leq 90^{\circ}\text{C}$, the total allowed thermal resistance is: 
 
-$\theta_{tot\_allowed} = \frac{T_{j\_target} - T_A}{P_{Q8\_max}} = \frac{90^{\circ}\text{C} - 30^{\circ}\text{C}}{2.85\text{W}} \approx 21^{\circ}\text{C/W}$
-
+$\theta_{tot\_allowed} = \frac{T_{j\_target} - T_A}{P_{Q8\_max}} = \frac{90^{\circ}\text{C} - 30^{\circ}\text{C}}{2.85\text{W}} \approx 21^{\circ}\text{C/W}$<br/>
 $\theta_{heatsink} = \theta_{tot\_allowed} - \theta_{jc} - \theta_{case-to-sink} \approx 21 - 10 - 1 = 10^{\circ}\text{C/W}$
 
 **$Q_8$ must be equipped with a heatsink**.
@@ -90,7 +93,7 @@ $$I_{feedback} = \frac{R_7}{R_6} \times I_{out} \approx \frac{1}{10} I_{out} $$
  
  ***Notes**: At the minimum current setting ($Iout=1mA$), the discrete mirrors progressively deviate from their ideal geometric behavior because of finite Early voltage effects.*
 
-#### 5. Push-Button P and Thermal Considerations
+#### 5. Push-Button P1 and Thermal Considerations
 The circuit is designed for intermittent operation rather than continuous load delivery. The activation is limited to the few seconds required to read the voltage on the display. This pulsed behavior introduces a significant safety margin, components experience power dissipation only in short transients.
 
 ### LTspice Simulation
@@ -123,40 +126,37 @@ The circuit was assembled on a custom PCB (perfboard).
 ### Calibration Procedure
 Calibration is required to compensate for component tolerances by configuring each of the 8 rotary switch positions to its exact target value.
 1. Connect a multimeter set to DC Current mode across the TEST terminals.
-2. For each switch position, adjust the corresponding trimmer ($R_{3a}$ through $R_{3h}$) until the multimeter displays the target current ($1mA$, $2mA$, $5mA$, $10mA$, $20mA$, $50mA$, $100mA$).
+2. For each switch position, adjust the corresponding trimmer ($R_{3a}$ through $R_{3h}$) until the multimeter displays the target current ($1mA$, $2mA$, $5mA$, $10mA$, $20mA$, $30mA$, $50mA$, $100mA$).
 
 ### Test Log
 
 **Supply Voltage Sensitivity and Output Compliance**:
-|VCC|Iout|
-|---|--:|
-|9 V||
-|12 V||
-|24||
-|30||
+|VCC|Iout|Vout|Device under Test|
+|---|---|---|--:|
+|9V|...|...|...|
+|12V|...|...|...|
+|24V|...|...|...|
+|30V|...|...|...|
 
 **Thermal Stability**:
-
-**The Role of $R_{10}$**:
-To verify the low-current behavior, the voltage across $R_{10}$ was measured at different output current values, and used to estimate the fraction of current flowing through the resistor. The measured contribution was compared against the 15–20% predicted by simulation.
-|Iout nominal|VR10|IR10|IR10/Iout|
-|---|--:|--:|--:|
-|1 mA|...|...|...|
-|2 mA|...|...|...|
-|5 mA|...|...|...|
+<br/>...
 
 **Some device measures**:
-|Device|1 mA|10 mA|100 mA|
+|Device|1mA|10mA|100mA|
 |---|--:|--:|--:|
-|1N4148|0.58 V|0.67 V|0.83 V|
-|1N5819|0.22 V|0.29 V|0.39 V|
-|LED rosso|1.58 V|1.74 V|1.92 V|
+|1N4148|...|...|...|
+|1N5819|...|...|...|
+|1N4007|...|...|...|
+|BZX55B-5V2|...|...|...|
+|LED rosso|...|...|-|
+
+
 ## Conclusions
-**Results**: At $V_{CC}=30V$ the circuit may be capable of measuring all Zener breakdown voltages $V_Z$ up to $27V$.
+**Results**: At $V_{CC}=30V$ the circuit is capable of measuring all Zener breakdown voltages $V_Z$ up to $27V$.
   
 **Suggestions**: 
 
-**Evolutions**: Higher-voltage operation raised the question of how to derive bounded internal supply rails from a wider input range. The exploration of alternative voltage reduction strategies has been documented separately in the [Voltage Reduction Circuits](https://github.com/gom9000/xp-circuit-blocks/tree/master/voltage-reduction-circuits)  experience of [Circuit Blocks eXPerience](https://github.com/gom9000/xp-circuit-blocks/tree/master) repo.
+**Evolutions**: Higher-voltage operation raised the question of how to derive bounded internal supply rails from a wider input range. The exploration of alternative voltage reduction strategies has been documented separately in the [Voltage Reduction Circuits](https://github.com/gom9000/xp-circuit-blocks/tree/master/voltage-reduction-circuits) experience of [Circuit Blocks eXPerience](https://github.com/gom9000/xp-circuit-blocks/tree/master) repo.
 
 
 ## Changes
